@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Internal HDD</title>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+            integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+            crossorigin="anonymous"></script>
+
+    <!-- jQuery UI for range slider -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
+          integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ=="
+          crossorigin="anonymous"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+            integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+            crossorigin="anonymous"></script>
+
+    <!-- Select2 code -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2.min.css"
+          integrity="sha512-iVAPZRCMdOOiZWYKdeY78tlHFUKf/PqAJEf/0bfnkxJ8MHQHqNXB/wK2y6RH/LmoQ0avRlGphSn06IMMxSW+xw=="
+          crossorigin="anonymous"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2.min.js"
+            integrity="sha512-jfp1Gv+A3dHho9qOUUWOrZA6NWR08j7GYVn8VXcRI0FsDb3xe0hQHVwasi2UarjZzPYOxT5uvmlHrWLXQ+M4AQ=="
+            crossorigin="anonymous"></script>
+
+    <!-- tablesorter plugin -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/css/theme.default.min.css"
+          integrity="sha512-wghhOJkjQX0Lh3NSWvNKeZ0ZpNn+SPVXX1Qyc9OCaogADktxrBiBdKGDoqVUOyhStvMBmJQ8ZdMHiR3wuEq8+w=="
+          crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/css/theme.jui.min.css"
+          integrity="sha512-P8bbeO94Om6NRt8zty7v54b1LuwclWVqrufWMaZm/s+Bc+y8/fCL5iRk/yXtmZKA6FmB8G2ehSgVZXgPyJO1jQ=="
+          crossorigin="anonymous"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"
+            integrity="sha512-qzgd5cYSZcosqpzpn7zF2ZId8f/8CHmFKZ8j7mU4OUXTNRd5g+ZHBPsgKEwoqxCtdQvExE5LprwwPAgoicguNg=="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.widgets.min.js"
+            integrity="sha512-dj/9K5GRIEZu+Igm9tC16XPOTz0RdPk9FGxfZxShWf65JJNU2TjbElGjuOo3EhwAJRPhJxwEJ5b+/Ouo+VqZdQ=="
+            crossorigin="anonymous"></script>
+
+    <!-- filter formatter code -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/css/filter.formatter.min.css"
+          integrity="sha512-5teN5RuH2Ez/zg+vjq7lzVSmPomDOlAkXXmiUtKwANhc452+urltjRJZQvp6N5F+SXnu/6HxJlLiXPkkD+3oSg=="
+          crossorigin="anonymous"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/widgets/widget-filter-formatter-jui.min.js"
+            integrity="sha512-OQs2Fwh4pFc2V3kLU2XpOhy/dZ+Ct3/X+V+60QHp+Q6+N2bXDQTbeopHeOYVUhh2XWG8J+GZ68AHWrauUfjUCQ=="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/widgets/widget-filter-formatter-select2.min.js"
+            integrity="sha512-d0OEbCftlr68mN28atrJqGOwQNkpxlv3lDd+sYGQu3O/WpWL1Ha7rbMfLLEXlPvYHJ1qqAcksMGlPzESYATjzA=="
+            crossorigin="anonymous"></script>
+
+    <!-- Configs -->
+    <style>
+        td, th {
+            text-align: center;
+        }
+    </style>
+    <script>
+        function defaultSelect2($cell, indx) {
+            return $.tablesorter.filterFormatter.select2($cell, indx, {});
+        }
+
+        $(function () {
+            $("#myTable").tablesorter({
+                sortReset: true,
+                widthFixed: true,
+                widgets: ["zebra", "filter", "columns"],
+                widgetOptions: {
+                    filter_reset: 'button.reset',
+                    filter_formatter: {
+                        1: defaultSelect2,
+                        2: defaultSelect2,
+                        3: defaultSelect2,
+                        4: defaultSelect2,
+                        5: defaultSelect2,
+                        7: defaultSelect2,
+                        8: defaultSelect2,
+                        // Total column (jQuery selector added v2.17.0)
+                        '.price': function ($cell, index) {
+                            return $.tablesorter.filterFormatter.uiRange($cell, index, {
+                                delayed: true,        // delay search (set by filter_searchDelay)
+                                valueToHeader: false, // add current slider value to the header cell
+
+                                // add any of the jQuery UI Slider options (for range selection) here (http://api.jqueryui.com/slider/)
+                                values: [1, 20000],     // starting range
+                                min: 1,               // minimum value
+                                max: 20000              // maximum value
+                            });
+                        }
+                    },
+
+                }
+            });
+        });
+    </script>
+
+</head>
+<body>
+<h1>傳統內接硬碟HDD</h1>
+<h6>資料來自於原價屋</h6>
+<h6>網頁更新時間：{{ update_time }}</h6>
+<button type="button" class="reset">Reset Filter</button>
+<table id="myTable" class="tablesorter tablesorter-default">
+    <thead>
+    <tr>
+        <th class="filter-false">#</th>
+        <th class="filter-onlyAvail">Class</th>
+        <th class="filter-onlyAvail">Brand</th>
+        <th class="filter-onlyAvail">Size (TB)</th>
+        <th class="filter-onlyAvail">Series</th>
+        <th class="filter-onlyAvail">Memory (MB)</th>
+        <th class="filter-onlyAvail" data-placeholder="Model">Model</th>
+        <th class="filter-onlyAvail">RPM</th>
+        <th class="filter-onlyAvail">Warranty (Year)</th>
+        <th class="price">Price</th>
+        <th class="filter-false">Size/Price (MB/TWD)</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in items %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ item.subtitle }}</td>
+            <td>{{ item.brand }}</td>
+            <td>{{ item.size }}</td>
+            <td>{{ item.series }}</td>
+            <td>{{ item.memory }}</td>
+            <td>{{ item.model }}</td>
+            <td>{{ item.rpm }}</td>
+            <td>{{ item.warranty }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.cp_value|int }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
