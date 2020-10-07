@@ -2,6 +2,8 @@
 
 目前僅實現爬取傳統內接硬碟資料，並轉成簡單篩選網頁，包含cp值比較。
 
+[Live Demo](https://scsa3.github.io/coolpc/)
+
 ## Usage
 
 ```shell script
