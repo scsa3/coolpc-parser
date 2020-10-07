@@ -20,3 +20,4 @@ python internal_hdd.py
 - CPU
 - SSD
 - USB Drive
+ㄇ- Facebook 留言
