@@ -15,8 +15,12 @@ translator = {
 }
 
 
-def get_index_soup() -> BeautifulSoup:
+def get_index_soup(is_coolpc_having_fucking_garbage_html=False) -> BeautifulSoup:
     url = "http://www.coolpc.com.tw/evaluate.php"
     resp = requests.get(url)
-    soup = BeautifulSoup(resp.text, "html.parser")
+    if is_coolpc_having_fucking_garbage_html:
+        html = resp.text.replace("<OPTGROUP", "</OPTGROUP><OPTGROUP")
+    else:
+        html = resp.text
+    soup = BeautifulSoup(html, "html.parser")
     return soup

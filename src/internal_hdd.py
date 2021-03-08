@@ -16,7 +16,7 @@ class InternalHdd:
         self.options = self.get_options()
 
     def get_tag(self):
-        soup = get_index_soup()
+        soup = get_index_soup(is_coolpc_having_fucking_garbage_html=True)
         title_tag = soup.find(text=self.title)
         tag: Tag = title_tag.parent
         return tag
