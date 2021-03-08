@@ -1,2 +1,4 @@
 # Project exclude paths
 /venv/
+Pipfile.lock
+__pycache__
