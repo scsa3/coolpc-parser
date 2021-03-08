@@ -7,7 +7,7 @@
 ## Usage
 
 ```shell script
-python internal_hdd.py
+make b
 ```
 
 可搭配cron實現定時更新
